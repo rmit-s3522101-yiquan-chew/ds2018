@@ -1,4 +1,6 @@
 # Database System 2018
+### Github [link](https://github.com/rmit-s3522101-yiquan-chew/ds2018.git)
+
 Disclaimer: This project is meant for RMIT COSC2406 Database System Assignment 1 2018. Any meant for publish, distribute or business used without owner permission is not allowed.
 
 ## 1.  To compile
