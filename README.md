@@ -7,12 +7,16 @@ Disclaimer: This project is meant for RMIT COSC2406 Database System Assignment 1
 ## 2.  Making Heap file
 `java dbload -p pagesize datafile`
 
-eg:
+Note: A new file "heap.(pagesize)" will be created
+
+Eg:
 - `java dbload -p 4096 datafile.csv`
+- heap.4096 will be created
+
 
 ## 3.  Searching term
 `java dbquery text pagesize`
 
-eg:
+Eg:
 - `java dbquery hello 4096`
 - `java dbquery "hello world" 4096`
