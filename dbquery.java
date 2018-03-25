@@ -13,8 +13,7 @@ public class dbquery {
             e.printStackTrace();
             System.out.println("Invalid arguments. Please try again");
             System.exit(0);
-        }        
-		// TODO Auto-generated method stub
+        }
 		long startTime, endTime, duration;
 		
 		startTime = System.currentTimeMillis();

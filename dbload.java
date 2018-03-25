@@ -13,7 +13,6 @@ public class dbload {
             System.out.println("Invalid arguments. Please try again");
             System.exit(0);
         }
-		// TODO Auto-generated method stub
 		long startTime, endTime, duration;
 		
 		startTime = System.currentTimeMillis();
@@ -39,7 +38,7 @@ public class dbload {
 			while((in = br.readLine()) != null){
                 String data = new String();
                 
-                //split the line, change the id
+                //split the line, skip register name
                 String[] token = in.split("\t");
                 
                 for(int i=1; i<header.length; i++){
@@ -59,6 +58,7 @@ public class dbload {
                 }
                 byte[] b = data.getBytes();
                 
+                //make sure page is enough to contain the data
 				if((page + b.length) < pagesize){
                     pw.print(data);
 					page += b.length;
@@ -66,6 +66,7 @@ public class dbload {
 				else{
                     System.out.print("Writing page " + pageNum + ". Previous page size is " + page + "\r");
                     pw.println("page " + pageNum);
+                    pw.print(data);
 					page = b.length;
 					pageNum++;
 				}
