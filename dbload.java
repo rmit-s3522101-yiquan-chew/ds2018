@@ -3,7 +3,7 @@ import java.util.*;
 
 public class dbload {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         int pagesize = 0;
         String datafile = null;
         try{
@@ -14,29 +14,29 @@ public class dbload {
             System.out.println("Invalid arguments. Please try again");
             System.exit(0);
         }
-		long startTime, endTime, duration;
-		
-		startTime = System.currentTimeMillis();
-		heapFile(pagesize, datafile);
-		endTime = System.currentTimeMillis();
-		duration = (endTime - startTime);
-		System.out.println("Time taken for creating heapfile page size " + pagesize + ": " + (duration/1000) + "s");
-	}
+        long startTime, endTime, duration;
+        
+        startTime = System.currentTimeMillis();
+        heapFile(pagesize, datafile);
+        endTime = System.currentTimeMillis();
+        duration = (endTime - startTime);
+        System.out.println("Time taken for creating heapfile page size " + pagesize + ": " + (duration/1000) + "s");
+    }
 
-	public static void heapFile(int pagesize, String datafile){
-		File file = new File("heap" + "." + pagesize);
-		int pageNum = 1;
-		
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(datafile));
-			PrintWriter pw = new PrintWriter(new FileWriter(file));
-			
-			String in;
-			int page = 0;
+    public static void heapFile(int pagesize, String datafile){
+        File file = new File("heap" + "." + pagesize);
+        int pageNum = 1;
+        
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(datafile));
+            PrintWriter pw = new PrintWriter(new FileWriter(file));
+            
+            String in;
+            int page = 0;
             byte[] buffer = new byte[0];
             
-			String[] header = (br.readLine()).split("\t"); //read pass the header
-			
+            String[] header = (br.readLine()).split("\t"); //read pass the header
+            
             while((in = br.readLine()) != null){
                 String data = new String();
                 
@@ -61,11 +61,11 @@ public class dbload {
                 byte[] b = data.getBytes();
                 
                 //make sure page is enough to contain the data
-				if((page + b.length) < pagesize){
+                if((page + b.length) < pagesize){
                     buffer = appendByte(b, buffer);
-					page += b.length;
-				}
-				else{
+                    page += b.length;
+                }
+                else{
                     pw.println(Arrays.toString(buffer));
                     System.out.print("Writing page " + pageNum + ". Previous page size is " + buffer.length + "\r");
                     
@@ -73,30 +73,30 @@ public class dbload {
                     buffer = new byte[0];
                     appendByte(b, buffer);
                     
-					page = b.length;
-					pageNum++;
-				}
+                    page = b.length;
+                    pageNum++;
+                }
                 
                 /*//for testing
                 if(pageNum == 10){
                     break;
                 }*/
-			}
-			br.close();
-			pw.close();
+            }
+            br.close();
+            pw.close();
             
             System.out.println();
             System.out.println("Finish loading.");
             System.out.println("Total page : " + pageNum);
-			
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+            
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
     
     /* append data byte to destination byte
     */
