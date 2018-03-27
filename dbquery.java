@@ -4,10 +4,10 @@ public class dbquery {
 
 	public static void main(String[] args) {
         String query = null;
-        String pagesize = null;
+        int pagesize = 0;
         try{
             query = args[0];
-            pagesize = args[1];
+            pagesize = Integer.parseInt(args[1]);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -23,24 +23,31 @@ public class dbquery {
 		System.out.println("Time taken for search : " + (duration/1000) + "s");
 	}
 
-	public static void searchText(String query, String pagesize){
+	public static void searchText(String query, int pagesize){
 		File file = new File("heap" + "." + pagesize);
         
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(file));
 			
 			String in;
-			int page = -1;
+			int pageCount = 0;
             int count = 0;
 			
 			while((in = br.readLine()) != null){
-                //read page
-                if(Character.toString(in.charAt(0)).equals("p")){
-                    page++;
-                    System.out.print("Searching in page " + page + "...\r");
+                //Convert String to byte
+                String[] byteValues = in.substring(1, in.length() - 1).split(",");
+                byte[] bytes = new byte[byteValues.length];
+
+                for (int i=0; i<bytes.length; i++) {
+                   bytes[i] = Byte.parseByte(byteValues[i].trim());     
                 }
-                else{
-                    String[] token = in.split("\t");
+
+                String pageData = new String(bytes);
+                
+                String[] page = pageData.split("\r\n");
+                
+                for(int j=0; j<page.length-1; j++){
+                    String[] token = page[j].split("\t");
                     
                     for(int i=0; i<token.length; i++){
                         //split the datainto 2 part
@@ -52,13 +59,15 @@ public class dbquery {
                             String check2 = data[1].toLowerCase();
                             
                             if(check2.contains(check1)){
-                                System.out.print("Found '" + query + "' in page " + page + ": ");
+                                System.out.print("Found '" + query + "' in page " + pageCount + ": ");
                                 System.out.print(data[1] + "\r\n");
                                 count++;
                             }
                         }
                     }
                 }
+                
+                pageCount++;
 			}
 			br.close();
             
@@ -73,7 +82,8 @@ public class dbquery {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+        
+    }
 
     
 }

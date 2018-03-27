@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 
 public class dbload {
 
@@ -32,10 +33,11 @@ public class dbload {
 			
 			String in;
 			int page = 0;
+            byte[] buffer = new byte[0];
+            
 			String[] header = (br.readLine()).split("\t"); //read pass the header
 			
-            pw.println("page 0");
-			while((in = br.readLine()) != null){
+            while((in = br.readLine()) != null){
                 String data = new String();
                 
                 //split the line, skip register name
@@ -60,16 +62,25 @@ public class dbload {
                 
                 //make sure page is enough to contain the data
 				if((page + b.length) < pagesize){
-                    pw.print(data);
+                    buffer = appendByte(b, buffer);
 					page += b.length;
 				}
 				else{
-                    System.out.print("Writing page " + pageNum + ". Previous page size is " + page + "\r");
-                    pw.println("page " + pageNum);
-                    pw.print(data);
+                    pw.println(Arrays.toString(buffer));
+                    System.out.print("Writing page " + pageNum + ". Previous page size is " + buffer.length + "\r");
+                    
+                    //flush buffer
+                    buffer = new byte[0];
+                    appendByte(b, buffer);
+                    
 					page = b.length;
 					pageNum++;
 				}
+                
+                /*//for testing
+                if(pageNum == 10){
+                    break;
+                }*/
 			}
 			br.close();
 			pw.close();
@@ -86,4 +97,18 @@ public class dbload {
 			e.printStackTrace();
 		}
 	}
+    
+    /* append data byte to destination byte
+    */
+    public static byte[] appendByte(byte[] data, byte[] destination){
+        byte[] temp = new byte[destination.length + data.length];
+        
+        //copy all data into temp
+        System.arraycopy(destination, 0, temp, 0, destination.length);
+        System.arraycopy(data, 0, temp, destination.length, data.length);
+        
+        destination = temp;
+        
+        return destination;
+    }
 }
