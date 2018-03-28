@@ -29,7 +29,7 @@ public class dbload {
         
         try {
             BufferedReader br = new BufferedReader(new FileReader(datafile));
-            PrintWriter pw = new PrintWriter(new FileWriter(file));
+            OutputStream os = new BufferedOutputStream(new FileOutputStream(file));
             
             String in;
             int page = 0;
@@ -66,8 +66,13 @@ public class dbload {
                     page += b.length;
                 }
                 else{
-                    pw.println(Arrays.toString(buffer));
-                    System.out.print("Writing page " + pageNum + ". Previous page size is " + buffer.length + "\r");
+                    //ensure page page is filled to page size
+                    byte[] temp = new byte[pagesize];
+                    System.arraycopy(buffer, 0, temp, 0, buffer.length);
+                    
+                    os.write(temp);
+                    //pw.println(Arrays.toString(buffer));
+                    System.out.print("Writing page " + pageNum + ". Previous page size is " + temp.length + "\r");
                     
                     //flush buffer
                     buffer = new byte[0];
@@ -77,13 +82,13 @@ public class dbload {
                     pageNum++;
                 }
                 
-                /*//for testing
+                /*/for testing
                 if(pageNum == 10){
                     break;
                 }*/
             }
             br.close();
-            pw.close();
+            //pw.close();
             
             System.out.println();
             System.out.println("Finish loading.");

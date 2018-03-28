@@ -27,24 +27,19 @@ public class dbquery {
         File file = new File("heap" + "." + pagesize);
         
         try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
+            InputStream is = new BufferedInputStream(new FileInputStream(file));
+            byte[] buffer = new byte[pagesize];
             
             String in;
             int pageCount = 0;
             int count = 0;
             
-            while((in = br.readLine()) != null){
-                //Convert String to byte
-                String[] byteValues = in.substring(1, in.length() - 1).split(",");
-                byte[] bytes = new byte[byteValues.length];
-
-                for (int i=0; i<bytes.length; i++) {
-                   bytes[i] = Byte.parseByte(byteValues[i].trim());     
-                }
-
-                String pageData = new String(bytes);
+            while(is.read(buffer) != -1){
+                in = new String(buffer);
                 
-                String[] page = pageData.split("\r\n");
+                System.out.print("Searching in page " + pageCount + "\r");
+                
+                String[] page = in.split("\r\n");
                 
                 for(int j=0; j<page.length-1; j++){
                     String[] token = page[j].split("\t");
@@ -66,10 +61,8 @@ public class dbquery {
                         }
                     }
                 }
-                
                 pageCount++;
             }
-            br.close();
             
             System.out.println();
             System.out.println("Finish loading.");
