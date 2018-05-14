@@ -2,7 +2,7 @@
 ### Github [link](https://github.com/rmit-s3522101-yiquan-chew/ds2018.git)
 ### Report for Assignment 2 [link](https://docs.google.com/document/d/1X3IlGka3rjPziSM0mx-hXDUwugFMORvbvKsNXM6qboo/edit?usp=sharing)
 
-Disclaimer: This project is meant for RMIT COSC2406 Database System Assignment 1 2018. Any meant for publish, distribute or business used without owner permission is not allowed.
+Disclaimer: This project is meant for RMIT COSC2406 Database System Assignment 2018. Any meant for publish, distribute or business used without owner permission is not allowed.
 
 ## 1.  Basic command
 `make main` : Compiling all .java files
