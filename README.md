@@ -3,10 +3,13 @@
 
 Disclaimer: This project is meant for RMIT COSC2406 Database System Assignment 1 2018. Any meant for publish, distribute or business used without owner permission is not allowed.
 
-## 1.  To compile
-`make main`
+## 1.  Basic command
+`make main` : Compiling all .java files
 
-## 2.  Making Heap file
+`git log > git.log` : Exporting git log to "git.log" files
+
+## Assignment 1
+### 1.  Making Heap file
 `java dbload -p pagesize datafile`
 
 Note: A new file "heap.(pagesize)" will be created
@@ -16,9 +19,21 @@ Eg:
 - heap.4096 will be created
 
 
-## 3.  Searching term
+### 2.  Searching term
 `java dbquery text pagesize`
 
 Eg:
 - `java dbquery hello 4096`
 - `java dbquery "hello world" 4096`
+
+
+## Assignment 2
+### 1.  Making Index file
+`java hashload pagesize`
+
+An index.(pagesize) file based on heap.(pagesize) will be created
+
+### 2.  Querying Index
+`java hashquery "query text" pagesize`
+
+Program will shift through index.(pagesize) to find the location of the query text
