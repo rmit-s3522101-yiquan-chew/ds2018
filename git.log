@@ -1,0 +1,83 @@
+commit aa92a70ef01657e47daf7b857e89366d791625b8
+Author: EC2 Default User <ec2-user@ip-10-88-170-119.ap-southeast-2.compute.internal>
+Date:   Wed Mar 28 08:56:39 2018 +0000
+
+    File is now save/read in bytes, with byte length same as page size
+
+commit 97f2e71ff0e28fca548fb790c7023ad5271fe49a
+Author: EC2 Default User <ec2-user@ip-10-88-170-119.ap-southeast-2.compute.internal>
+Date:   Tue Mar 27 14:34:47 2018 +0000
+
+    Minor formatting
+
+commit 420a7fecd80754dc8f731081630048ff7f15937b
+Merge: 2fce00d a49398b
+Author: EC2 Default User <ec2-user@ip-10-88-170-119.ap-southeast-2.compute.internal>
+Date:   Tue Mar 27 14:28:49 2018 +0000
+
+    Merge branch 'master' of https://github.com/rmit-s3522101-yiquan-chew/ds2018
+
+commit 2fce00d58351377f7771e49dc81c2f6a4dd2125e
+Author: EC2 Default User <ec2-user@ip-10-88-170-119.ap-southeast-2.compute.internal>
+Date:   Tue Mar 27 14:25:18 2018 +0000
+
+    Change read and write to binary file type
+
+commit 677c63f0d05bb0148c5590ff44d58156d8e69089
+Author: EC2 Default User <ec2-user@ip-10-88-170-119.ap-southeast-2.compute.internal>
+Date:   Tue Mar 27 14:22:24 2018 +0000
+
+    Change read and write to binary file type
+
+commit a49398bfa6944ca98869d204536d408eea6a3c30
+Author: Yi Quan Chew <rmit-s3522101-yiquan-chew@users.noreply.github.com>
+Date:   Sun Mar 25 15:41:59 2018 +1100
+
+    Update README.md
+    
+    update with github link
+
+commit 06a22d9315bbbe89e43029d4198bac858d820693
+Author: EC2 Default User <ec2-user@ip-10-88-170-119.ap-southeast-2.compute.internal>
+Date:   Sun Mar 25 04:36:41 2018 +0000
+
+    Minor refractoring. Code Commenting. Fix a bug where data couldnt print properly after a new page
+
+commit ab16a923466191fbb6a578987dfbbb53374ed644
+Merge: 6680f37 b01a670
+Author: EC2 Default User <ec2-user@ip-10-88-170-119.ap-southeast-2.compute.internal>
+Date:   Sun Mar 25 04:31:39 2018 +0000
+
+    Merge branch 'master' of https://github.com/rmit-s3522101-yiquan-chew/ds2018
+    
+    Minor Code refractoring, comment update
+
+commit 6680f37d9a5bc9317533b78ac78aead8609b69d9
+Author: EC2 Default User <ec2-user@ip-10-88-170-119.ap-southeast-2.compute.internal>
+Date:   Sun Mar 25 04:30:12 2018 +0000
+
+    Code Refractoring
+
+commit b01a6706671ac3b77e59468772f1389804cd093c
+Author: Yi Quan Chew <rmit-s3522101-yiquan-chew@users.noreply.github.com>
+Date:   Sun Mar 25 14:35:56 2018 +1100
+
+    Update README.md
+
+commit 73bf376b1b8e9a231ae6c24e91c5d48ae90783bb
+Author: EC2 Default User <ec2-user@ip-10-88-170-119.ap-southeast-2.compute.internal>
+Date:   Sun Mar 25 03:29:23 2018 +0000
+
+    Add Makefile
+
+commit 668a175aa0029798d608097b1f4cae0daa84674c
+Author: Yi Quan Chew <rmit-s3522101-yiquan-chew@users.noreply.github.com>
+Date:   Sun Mar 25 14:26:18 2018 +1100
+
+    Create Readme.md
+
+commit 217eb96a08f3d5dff7ca805226e476655945b3cb
+Author: EC2 Default User <ec2-user@ip-10-88-170-119.ap-southeast-2.compute.internal>
+Date:   Sun Mar 25 02:58:22 2018 +0000
+
+    First commit
